@@ -3,459 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ApexCapital - Secure Loan Portal</title>
+    <title>Apex Capital - Loan Application Portal</title>
     <style>
-        :root {
-            --bg-main: #0b0f19;
-            --bg-card: #111827;
-            --bg-input: #1f2937;
-            --border-color: #374151;
-            --accent-blue: #3b82f6;
-            --text-main: #f9fafb;
-            --text-muted: #9ca3af;
-        }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
             margin: 0;
             padding: 20px;
-            scroll-behavior: smooth;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            background: #ffffff;
             padding: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
         }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-            margin-bottom: 25px;
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
         }
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: var(--accent-blue);
-        }
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-        nav a:hover {
-            color: var(--text-main);
-        }
-        h3 {
-            font-size: 16px;
-            color: #60a5fa;
-            border-left: 3px solid var(--accent-blue);
-            padding-left: 10px;
-            margin-top: 25px;
-        }
-        .form-group-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+        .form-group {
             margin-bottom: 15px;
         }
-        .input-field {
-            display: flex;
-            flex-direction: column;
-        }
-        .input-field.full {
-            grid-column: span 2;
-        }
         label {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 6px;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
         }
-        input, select {
-            background: var(--bg-input);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 10px 12px;
-            color: var(--text-main);
-            font-size: 14px;
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
-        input[type="file"] {
-            padding: 8px;
-            cursor: pointer;
-        }
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-        }
-        .terms-box, .bank-box {
-            background: var(--bg-input);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 16px;
-            margin-top: 20px;
-        }
-        .bank-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            font-size: 13px;
-            margin-top: 10px;
-            color: #d1d5db;
-        }
-        .btn-submit {
-            background: var(--accent-blue);
-            color: white;
-            border: none;
+        button {
             width: 100%;
             padding: 12px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 15px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background 0.2s;
-        }
-        .btn-submit:hover {
-            background: #2563eb;
-        }
-
-        /* CHATBOT STYLES */
-        .chat-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        .chat-btn {
-            background: var(--accent-blue);
+            background-color: #007BFF;
             color: white;
             border: none;
-            border-radius: 50px;
-            padding: 12px 20px;
-            font-weight: bold;
+            border-radius: 4px;
+            font-size: 16px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            margin-top: 10px;
         }
-        .chat-window {
-            display: none;
-            width: 320px;
-            height: 400px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        button:hover {
+            background-color: #0056b3;
         }
-        .chat-header {
-            background: var(--bg-input);
-            padding: 12px;
-            font-weight: bold;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .chat-body {
-            flex: 1;
-            padding: 12px;
-            overflow-y: auto;
-            font-size: 13px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .chat-msg {
-            padding: 8px 12px;
-            border-radius: 6px;
-            max-width: 80%;
-            line-height: 1.4;
-        }
-        .chat-msg.bot {
-            background: var(--bg-input);
-            color: var(--text-main);
-            align-self: flex-start;
-        }
-        .chat-msg.user {
-            background: var(--accent-blue);
-            color: white;
-            align-self: flex-end;
-        }
-        .chat-footer {
+        .notice {
+            background-color: #e9f7fe;
+            border-left: 4px solid #2196F3;
             padding: 10px;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            gap: 6px;
-            background: var(--bg-input);
-        }
-        .chat-footer input {
-            flex: 1;
-            padding: 8px;
-            font-size: 13px;
-        }
-        .chat-footer button {
-            background: var(--accent-blue);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #0c5460;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <div class="logo">ApexCapital</div>
-        <nav>
-            <a href="index.html">Apply for Loan</a>
-            <a href="#track-section">Track Status</a>
-            <a href="admin.html" style="color: #f59e0b; font-weight: bold;" target="_blank">Admin Portal</a>
-        </nav>
-    </header>
-
-    <h2>Request a Standard Loan</h2>
-    <p style="font-size: 14px; color: var(--text-muted);">Please provide your accurate information and upload your identification for review.</p>
-
-    <form id="loanForm" onsubmit="handleFormSubmit(event)">
-        <h3>1. PERSONAL & IDENTITY INFORMATION</h3>
-        <div class="form-group-container">
-            <div class="input-field">
-                <label>Full Legal Name *</label>
-                <input type="text" id="clientName" placeholder="John Doe" required>
-            </div>
-            <div class="input-field">
-                <label>Email Address *</label>
-                <input type="email" id="clientEmail" placeholder="john@example.com" required>
-            </div>
-        </div>
-        <div class="form-group-container">
-            <div class="input-field">
-                <label>Phone Number *</label>
-                <input type="tel" id="clientPhone" placeholder="+1 (555) 000-0000" required>
-            </div>
-            <div class="input-field">
-                <label>Government-Issued ID / Passport Upload *</label>
-                <input type="file" id="clientID" accept=".pdf,.jpg,.png" required>
-            </div>
-        </div>
-        <div class="form-group-container">
-            <div class="input-field full">
-                <label>Full Residential Address *</label>
-                <input type="text" id="clientAddress" placeholder="123 Main Street, City, State, Zip" required>
-            </div>
-        </div>
-
-        <h3>2. LOAN AMOUNT & DISBURSEMENT</h3>
-        <div class="form-group-container">
-            <div class="input-field">
-                <label>Loan Amount Requested ($) *</label>
-                <input type="number" id="loanAmount" placeholder="e.g. 15000" oninput="updateFee()" required>
-            </div>
-            <div class="input-field">
-                <label>Preferred Payout Method *</label>
-                <select id="clientPayout" required>
-                    <option value="" disabled selected>Select method</option>
-                    <option value="Direct Bank Wire Transfer (ACH)">Direct Bank Wire Transfer (ACH)</option>
-                    <option value="Verified PayPal Account">Verified PayPal Account</option>
-                    <option value="Physical Check by Mail">Physical Check by Mail</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group-container">
-            <div class="input-field full">
-                <label>Purpose of Loan *</label>
-                <select id="clientPurpose" required>
-                    <option value="" disabled selected>Select purpose</option>
-                    <option value="Business Expansion">Business Expansion</option>
-                    <option value="Debt Consolidation">Debt Consolidation</option>
-                    <option value="Emergency / Medical">Emergency / Medical</option>
-                    <option value="Personal / Other">Personal / Other</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="terms-box">
-            <h4 style="margin: 0 0 8px 0; color: #60a5fa; font-size: 14px;">Administrative Underwriting & Verification Fee Policy</h4>
-            <p style="margin: 0; font-size: 13px; color: var(--text-muted); line-height: 1.4;">
-                To process your underwriting file and verify your documentation, a scaled non-refundable administrative fee applies based on your loan size. Review the official routing details below to complete your fee transfer.
-            </p>
-        </div>
-
-        <!-- BANK ACCOUNT DETAILS FOR FEE PAYMENT -->
-        <div class="bank-box">
-            <h4 style="margin: 0 0 5px 0; color: #10b981; font-size: 14px;">Official Fee Payment Account Details</h4>
-            <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Please transfer or wire the calculated verification fee using the details below:</p>
-            <div style="margin: 10px 0; font-size: 15px; color: #60a5fa; font-weight: bold;">
-                Required Verification Fee: <span id="displayFee">$150.00</span>
-            </div>
-            <div class="bank-details">
-                <div><strong>Bank Name:</strong> Apex Business Bank</div>
-                <div><strong>Account Name:</strong> ApexCapital Processing LLC</div>
-                <div><strong>Account Number:</strong> 109823456789</div>
-                <div><strong>Routing / SWIFT Code:</strong> APEXUS33XXX</div>
-            </div>
-        </div>
-
-        <label style="display: flex; align-items: flex-start; gap: 10px; margin-top: 15px; cursor: pointer; font-size: 13px;">
-            <input type="checkbox" required style="margin-top: 2px; width: 16px; height: 16px;">
-            <span>I acknowledge the tiered verification fee terms and have noted the official account details for payment.</span>
-        </label>
-
-        <button type="submit" class="btn-submit">Submit Verified Loan Application</button>
-    </form>
-
-    <!-- TRACK STATUS SECTION -->
-    <div id="track-section" style="margin-top: 50px; border-top: 1px solid var(--border-color); padding-top: 30px;">
-        <h3 style="color: #60a5fa; margin-top: 0;">Track Your Loan Status</h3>
-        <p style="font-size: 14px; color: var(--text-muted);">Enter your application email address to check your live underwriting progress.</p>
-        
-        <div style="display: flex; gap: 10px; margin-top: 15px;">
-            <input type="text" id="trackInput" placeholder="Enter Email Address" style="flex: 1;">
-            <button onclick="checkStatus()" style="background: var(--accent-blue); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">Search</button>
-        </div>
-
-        <div id="trackResult" style="margin-top: 20px; display: none; background: var(--bg-input); padding: 15px; border-radius: 6px; border-left: 4px solid #10b981;">
-            <h4 style="margin: 0 0 5px 0; color: #10b981; font-size: 14px;">Application Found</h4>
-            <p style="margin: 0; font-size: 13px; color: #d1d5db;" id="statusText"></p>
-        </div>
-    </div>
+    <h2>Apex Capital Loan Application</h2>
     
-    <footer style="text-align: center; margin-top: 40px; font-size: 12px; color: var(--text-muted);">
-        © 2026 ApexCapital. All rights reserved. Secure 256-Bit SSL Encryption.
-    </footer>
-</div>
-
-<!-- CHATBOT WIDGET HTML -->
-<div class="chat-widget">
-    <div id="chatWindow" class="chat-window">
-        <div class="chat-header">
-            <span>ApexBot Support</span>
-            <button onclick="toggleChat()" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:16px;">&times;</button>
-        </div>
-        <div id="chatBody" class="chat-body">
-            <div class="chat-msg bot">Hello! Welcome to ApexCapital. How can I help you with your loan application or fee calculation today?</div>
-        </div>
-        <div class="chat-footer">
-            <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key === 'Enter') sendChat()">
-            <button onclick="sendChat()">Send</button>
-        </div>
+    <!-- Notice regarding review time and payment -->
+    <div class="notice">
+        <strong>Important Notice:</strong> Your loan application will be reviewed within <strong>48 hours</strong> after your payment is successfully completed.
     </div>
-    <button id="chatToggleBtn" class="chat-btn" onclick="toggleChat()" style="display: none;">💬 Live Chat Support</button>
-</div>
 
-<script>
-    function calculateFeeVal(amount) {
-        if (amount > 0 && amount < 10000) return 100;
-        if (amount >= 10000 && amount <= 50000) return 150;
-        if (amount > 50000) return 250;
-        return 150;
-    }
-
-    function updateFee() {
-        const amount = parseFloat(document.getElementById('loanAmount').value) || 0;
-        const fee = calculateFeeVal(amount);
-        document.getElementById('displayFee').innerText = `$${fee}.00`;
-    }
-
-    function handleFormSubmit(e) {
-        e.preventDefault();
+    <!-- Replace YOUR_FORM_ID_HERE with your free form endpoint (e.g., from Formspree.io) -->
+    <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
         
-        const name = document.getElementById('clientName').value;
-        const email = document.getElementById('clientEmail').value;
-        const amount = document.getElementById('loanAmount').value;
-        const fee = calculateFeeVal(parseFloat(amount));
+        <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+        </div>
 
-        const newApp = {
-            name: name,
-            email: email,
-            amount: amount,
-            fee: fee,
-            status: "Under Review - Verification Pending"
-        };
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+        </div>
 
-        let applications = JSON.parse(localStorage.getItem('apexApplications')) || [];
-        applications.push(newApp);
-        localStorage.setItem('apexApplications', JSON.stringify(applications));
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+        </div>
 
-        alert("Application submitted successfully! You can track your real-time status below or review the bank transfer details for your verification fee.");
-        document.getElementById('loanForm').reset();
-        document.getElementById('displayFee').innerText = "$150.00";
-    }
+        <div class="form-group">
+            <label for="amount">Loan Amount Requested ($)</label>
+            <input type="number" id="amount" name="amount" required placeholder="e.g. 5000">
+        </div>
 
-    function checkStatus() {
-        const emailVal = document.getElementById('trackInput').value.trim().toLowerCase();
-        const resultBox = document.getElementById('trackResult');
-        const statusText = document.getElementById('statusText');
+        <div class="form-group">
+            <label for="purpose">Purpose of Loan</label>
+            <select id="purpose" name="purpose" required>
+                <option value="">Select a purpose</option>
+                <option value="Business">Business Expansion</option>
+                <option value="Personal">Personal Use</option>
+                <option value="Emergency">Emergency</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
 
-        if (emailVal === "") {
-            alert("Please enter your email address.");
-            return;
-        }
-
-        const applications = JSON.parse(localStorage.getItem('apexApplications')) || [];
-        const found = applications.find(app => app.email.toLowerCase() === emailVal);
-
-        resultBox.style.display = "block";
-        if (found) {
-            statusText.innerHTML = `Applicant: <strong>${found.name}</strong><br>Requested Amount: <strong>$${found.amount}</strong><br>Verification Fee: <strong>$${found.fee}</strong><br>Live Status: <span style="color: #f59e0b; font-weight: bold;">${found.status}</span>`;
-        } else {
-            statusText.innerHTML = `<span style="color: #ef4444;">No active loan application found for email: ${emailVal}</span>`;
-        }
-    }
-
-    // Chatbot Toggle & Logic
-    function toggleChat() {
-        const win = document.getElementById('chatWindow');
-        const btn = document.getElementById('chatToggleBtn');
-        if (win.style.display === 'none' || win.style.display === '') {
-            win.style.display = 'flex';
-            btn.style.display = 'none';
-        } else {
-            win.style.display = 'none';
-            btn.style.display = 'block';
-        }
-    }
-
-    function sendChat() {
-        const input = document.getElementById('chatInput');
-        const body = document.getElementById('chatBody');
-        const text = input.value.trim();
-
-        if (text === '') return;
-
-        body.innerHTML += `<div class="chat-msg user">${text}</div>`;
-        input.value = '';
-        body.scrollTop = body.scrollHeight;
-
-        setTimeout(() => {
-            let reply = "Thank you for reaching out. Please ensure you transfer the exact calculated fee amount to our account.";
-            const lower = text.toLowerCase();
-
-            if (lower.includes('fee') || lower.includes('cost') || lower.includes('tier')) {
-                reply = "Our verification fee scales automatically based on your requested loan amount: loans under $10,000 have a $100 fee, $10,000–$50,000 have a $150 fee, and amounts over $50,000 require a $250 fee.";
-            } else if (lower.includes('time') || lower.includes('long') || lower.includes('disburse')) {
-                reply = "Once your ID upload and fee transfer are verified, disbursement takes place within 24–48 hours.";
-            } else if (lower.includes('hello') || lower.includes('hi')) {
-                reply = "Hello! Let me know if you have questions about your loan size or transfer instructions.";
-            }
-
-            body.innerHTML += `<div class="chat-msg bot">${reply}</div>`;
-            body.scrollTop = body.scrollHeight;
-        }, 600);
-    }
-</script>
+        <button type="submit">Submit Loan Application</button>
+    </form>
+</div>
 
 </body>
+</html>
 </html>
