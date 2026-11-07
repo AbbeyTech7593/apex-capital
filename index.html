@@ -5,24 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Personal Loans & Lines of Credit | Apex Capital</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f6f9; color: #333; }
-        header { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 15px 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        nav a { margin: 0 10px; text-decoration: none; color: #004080; font-weight: bold; }
-        nav a:hover { text-decoration: underline; }
-        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .form-section { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        button { background: #004080; color: #fff; padding: 12px 20px; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; width: 100%; }
-        button:hover { background: #003366; }
-        .content-section { margin-top: 40px; background: #fff; padding: 20px 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header {
+            background: #fff;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0 0 10px 0;
+            color: #004085;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #004085;
+        }
+        section {
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Header -->
     <header>
-        <h2>Apex Capital</h2>
+        <h1>Apex Capital</h1>
         <nav>
             <a href="#personal-loans">Personal Loans</a>
             <a href="#lines-of-credit">Lines of Credit</a>
@@ -32,37 +92,52 @@
     </header>
 
     <div class="container">
-        <h1>Check Your Loan Eligibility</h1>
+        <h2>Check Your Loan Eligibility</h2>
         <p>Fast online personal loans and transparent terms tailored to your needs. Checking won't affect your credit score.</p>
-        
+
         <form>
-            <!-- 1. Personal & Contact Information -->
-            <div class="form-section">
-                <h3>1. Personal & Contact Information</h3>
-                
+            <!-- Section 1 -->
+            <h3>1. Personal & Contact Information</h3>
+            
+            <div class="form-group">
                 <label for="fullname">Full Legal Name *</label>
-                <input type="text" id="fullname" placeholder="John Doe" required>
-
-                <label for="dob">Date of Birth *</label>
-                <input type="date" id="dob" required>
-
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" placeholder="john@example.com" required>
-
-                <label for="phone">Phone Number *</label>
-                <input type="tel" id="phone" placeholder="(555) 000-0000" required>
+                <input type="text" id="fullname" name="fullname" placeholder="John Doe" required>
             </div>
 
-            <!-- 2. Loan Request Details -->
-            <div class="form-section">
-                <h3>2. Loan Request & Purpose</h3>
-                
-                <label for="amount">Loan Amount Requested ($) *</label>
-                <input type="number" id="amount" placeholder="25000" required>
+            <div class="form-group">
+                <label for="dob">Date of Birth *</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
 
-                <label for="purpose">Reason for the Loan *</label>
-                <select id="purpose" required>
-                    <option value="">Select loan category</option>
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required>
+            </div>
+
+            <!-- ID Upload Field Added Here -->
+            <div class="form-group">
+                <label for="id-upload">Upload Identification (Driver's License / Passport) *</label>
+                <input type="file" id="id-upload" name="id-upload" accept="image/*,.pdf" required>
+                <small style="color: #666; display: block; margin-top: 4px;">Accepted formats: Images or PDF.</small>
+            </div>
+
+            <!-- Section 2 -->
+            <h3>2. Loan Request & Purpose</h3>
+
+            <div class="form-group">
+                <label for="amount">Loan Amount Requested ($) *</label>
+                <input type="number" id="amount" name="amount" placeholder="25000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="reason">Reason for the Loan *</label>
+                <select id="reason" name="reason" required>
+                    <option value="">(Select loan category)</option>
                     <option value="debt-consolidation">Personal Debt Consolidation</option>
                     <option value="emergency">Emergency Expense</option>
                     <option value="home-improvement">Home Improvement</option>
@@ -72,31 +147,32 @@
 
             <button type="submit">Submit Application for Review</button>
         </form>
-    </div>
 
-    <!-- Clickable Content Sections -->
-    <div class="content-section" id="personal-loans">
-        <h2>Personal Loans</h2>
-        <p>Our personal loans provide fast funding with fixed monthly payments and transparent rates tailored to your financial profile. Borrowers can secure funds for debt consolidation, major purchases, or unexpected expenses with zero prepayment penalties.</p>
-    </div>
+        <hr style="margin: 40px 0; border: none; border-top: 1px solid #ddd;">
 
-    <div class="content-section" id="lines-of-credit">
-        <h2>Lines of Credit</h2>
-        <p>A flexible revolving line of credit allows you to draw funds whenever you need them. You only pay interest on the specific amount you draw, and your available balance replenishes as you make repayments.</p>
-    </div>
+        <section id="personal-loans">
+            <h3>Personal Loans</h3>
+            <p>Our personal loans provide fast funding with fixed monthly payments and transparent rates tailored to your financial profile. Borrowers can secure funds for debt consolidation, major purchases, or unexpected expenses with zero prepayment penalties.</p>
+        </section>
 
-    <div class="content-section" id="how-it-works">
-        <h2>How It Works</h2>
-        <ol>
-            <li><strong>Check Eligibility:</strong> Submit your basic application details online without affecting your credit score.</li>
-            <li><strong>Review Offers:</strong> Evaluate your loan options, custom terms, and repayment schedules.</li>
-            <li><strong>Get Funded:</strong> Once verified and approved, receive your funds directly.</li>
-        </ol>
-    </div>
+        <section id="lines-of-credit">
+            <h3>Lines of Credit</h3>
+            <p>A flexible revolving line of credit allows you to draw funds whenever you need them. You only pay interest on the specific amount you draw, and your available balance replenishes as you make repayments.</p>
+        </section>
 
-    <div class="content-section" id="terms">
-        <h2>Terms & Conditions</h2>
-        <p>By using this platform and submitting an application, you agree to our lending guidelines, privacy framework, and verification procedures. All loan offers are subject to credit evaluation, income verification, and final underwriting approval.</p>
+        <section id="how-it-works">
+            <h3>How It Works</h3>
+            <ol>
+                <li><strong>Check Eligibility:</strong> Submit your basic application details and ID online without affecting your credit score.</li>
+                <li><strong>Review Offers:</strong> Evaluate your loan options, custom terms, and repayment schedules.</li>
+                <li><strong>Get Funded:</strong> Once verified and approved, receive your funds directly.</li>
+            </ol>
+        </section>
+
+        <section id="terms">
+            <h3>Terms & Conditions</h3>
+            <p>By using this platform and submitting an application, you agree to our lending guidelines, privacy framework, and verification procedures. All loan offers are subject to credit evaluation, income verification, and final underwriting approval.</p>
+        </section>
     </div>
 
 </body>
